@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Image } from "react-native";
+import { Text, Image, StyleSheet } from "react-native";
 import {
   Container,
   Header,
@@ -37,28 +37,17 @@ export default class Home extends React.Component {
 
   render() {
     const { loading, properties } = this.state;
-    console.log(properties);
+    const { imageStyle, textStyle } = styles;
     return (
       <Container>
         <Header />
         <Content>
           {loading && <Spinner color="blue" />}
-          <Text
-            style={{
-              paddingHorizontal: "10%",
-              fontSize: 20,
-              textAlign: "center"
-            }}
-          >
-            Properties
-          </Text>
+          <Text style={textStyle}> Properties </Text>
           {properties.map(property => (
-            <Card style={{marginBottom: 5}} key={property.id}>             
+            <Card style={{ marginBottom: 5 }} key={property.id}>
               <CardItem cardBody>
-                <Image
-                  source={{ uri: property.image }}
-                  style={{ height: 200, width: null, flex: 1 }}
-                />
+                <Image source={{ uri: property.image }} style={imageStyle} />
               </CardItem>
               <CardItem>
                 <Left>
@@ -74,3 +63,16 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  textStyle: {
+    paddingHorizontal: "10%",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  imageStyle: {
+    height: 200,
+    width: null,
+    flex: 1
+  }
+});

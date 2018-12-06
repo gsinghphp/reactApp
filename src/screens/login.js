@@ -40,12 +40,12 @@ export default class Login extends React.Component {
         this.setState(() => ({
           loading: false
         }));
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate("Home");
         Toast.show({
-            text: 'Welcome',
-            buttonText: "Okay",
-            position: "top"
-          });
+          text: "Welcome",
+          buttonText: "Okay",
+          position: "top"
+        });
       })
       .catch(err => {
         Toast.show({
@@ -55,25 +55,18 @@ export default class Login extends React.Component {
         });
         this.setState(() => ({
           loading: false
-        })); 
+        }));
       });
   };
 
   render() {
     const { loading } = this.state;
+    const { textStyle, buttonContainer } = styles;
     return (
       <Container>
         <Header />
         <Content>
-          <Text
-            style={{
-              paddingHorizontal: "10%",
-              fontSize: 20,
-              textAlign: "center"
-            }}
-          >
-            Login
-          </Text>
+          <Text style={textStyle}>Login</Text>
           <Form style={{ paddingBottom: 20 }}>
             <Item>
               <Input
@@ -90,11 +83,11 @@ export default class Login extends React.Component {
             </Item>
           </Form>
           <Button primary full onPress={this.loginUser} disabled={loading}>
-            <Text style={{ color: "#fff" }}>Login</Text> 
-            {loading && <Spinner color="blue" />}      
+            <Text style={{ color: "#fff" }}>Login</Text>
+            {loading && <Spinner color="blue" />}
           </Button>
-          
-          <View style={{ alignItems: "center", paddingTop: 20 }}>
+
+          <View style={buttonContainer}>
             <Button
               transparent
               onPress={() => {
@@ -105,10 +98,19 @@ export default class Login extends React.Component {
             </Button>
           </View>
         </Content>
-        
       </Container>
     );
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  textStyle: {
+    paddingHorizontal: "10%",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  buttonContainer: {
+    alignItems: "center",
+    paddingTop: 20
+  }
+});

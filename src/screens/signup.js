@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
         this.setState(() => ({
           loading: false
         }));
-        this.props.navigation.navigate('Login')
+        this.props.navigation.navigate("Login");
       })
       .catch(err => {
         Toast.show({
@@ -56,19 +56,12 @@ export default class Signup extends React.Component {
 
   render() {
     const { loading } = this.state;
+    const { textStyle, buttonContainer } = styles;
     return (
       <Container>
         <Header />
         <Content>
-          <Text
-            style={{
-              paddingHorizontal: "10%",
-              fontSize: 20,
-              textAlign: "center"
-            }}
-          >
-            Signup
-          </Text>
+          <Text style={textStyle}>Signup</Text>
           <Form style={{ paddingBottom: 20 }}>
             <Item>
               <Input
@@ -88,7 +81,7 @@ export default class Signup extends React.Component {
             <Text style={{ color: "#fff" }}>Sign Up</Text>
             {loading && <Spinner color="blue" />}
           </Button>
-          <View style={{ alignItems: "center", paddingTop: 20 }}>
+          <View style={buttonContainer}>
             <Button
               transparent
               onPress={() => {
@@ -104,4 +97,14 @@ export default class Signup extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  textStyle: {
+    paddingHorizontal: "10%",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  buttonContainer: {
+    alignItems: "center",
+    paddingTop: 20
+  }
+});
